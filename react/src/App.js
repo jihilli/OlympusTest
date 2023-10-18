@@ -8,7 +8,7 @@ import Footer from './layout/Footer.tsx';
 
 function App() {
     const kakaoApiKey = process.env.REACT_APP_KAKAOSHARE_KEY;
-
+    // init 체크
     useEffect(() => {
         if (!window.Kakao.isInitialized()) {
             window.Kakao.init(kakaoApiKey);
