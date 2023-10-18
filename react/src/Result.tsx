@@ -2,6 +2,12 @@ import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import ShareKakaoLink from './share/ShareKakaoLink.tsx';
 
+// import 이미지
+import Kakao from './assets/img/kakao-talk.png';
+import LinkShare from './assets/img/link.png';
+import Facebook from './assets/img/facebook.png';
+import X from './assets/img/xImg.png';
+
 type ResultProps = {
     result: string;
 };
@@ -107,19 +113,117 @@ const Result: React.FC = () => {
             .catch((err) => console.error('Could not copy text: ', err));
     };
 
+    const openStoreLink = () => {
+        const userAgent = window.navigator.userAgent;
+
+        let url;
+
+        if (/android/i.test(userAgent)) {
+            url = 'https://play.google.com/store/apps/details?id=com.indj.music';
+        } else if (/iPad|iPhone|iPod|Apple Computer/.test(userAgent)) {
+            url =
+                'https://apps.apple.com/kr/app/indj-%EC%9E%90%EC%9C%A0%EB%A1%AD%EA%B2%8C-%EB%93%A3%EB%8A%94-%EC%83%81%ED%99%A9-%EA%B0%90%EC%84%B1-%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5-%EC%9D%8C%EC%95%85/id1513542512';
+        } else {
+            url = 'https://www.indj.ai/';
+        }
+
+        window.open(url, '_blank');
+    };
+
+    const shareFacebook = () => {
+        const url = window.location.href;
+        const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+        window.open(facebookUrl, '_blank');
+    };
+
+    const shareTwitter = () => {
+        const url = window.location.href;
+        const twitterUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}`;
+        window.open(twitterUrl, '_blank');
+    };
+
+    // 카카오톡 링크 공유
+    const shareKakaoLink = () => {
+        Kakao.Link.sendDefault({
+            objectType: 'feed',
+            content: {
+                title: '내가 올림포스 신이라면?',
+                description: output,
+                imageUrl:
+                    'https://img.freepik.com/free-vector/olympian-gods-flat-icon-set-with-athena-appolo-hera-zeus-hestia-demeter-aphrodite-ares-hermes-hephaestus-poseidon-artemis-figures-vector-illustration_1284-80695.jpg', // 썸네일 이미지 URL 설정
+                link: {
+                    mobileWebUrl: window.location.origin + '/result/' + id,
+                    webUrl: window.location.origin + '/result/' + id,
+                },
+            },
+            buttons: [
+                {
+                    title: '결과 보기',
+                    link: {
+                        mobileWebUrl: window.location.origin + '/result/' + id,
+                        webUrl: window.location.origin + '/result/' + id,
+                    },
+                },
+                {
+                    title: '나도 하러가기',
+                    link: {
+                        mobileWebUrl: window.location.origin,
+                        webUrl: window.location.origin,
+                    },
+                },
+            ],
+        });
+    };
+
     return (
         <div className="flex flex-col items-center justify-center text-center ml-6 h-full">
-            {' '}
-            <h3 className="lg:text-3xl mb-3 xs:text-2xl mt-10">당신의 결과는?</h3> <p className="text-xl">{output}</p>{' '}
-            <p className="mt-5">{info.description}</p>{' '}
-            <Link to="/">
-                {' '}
-                <button className="mt-4 px-4 py-2 bg-blue-500 text-white rounded">초기 화면으로 돌아가기</button>
-            </Link>
-            <button onClick={copyLink} className="mt-4 px-4 py-2 bg-green-500 text-white rounded">
-                링크 복사
-            </button>
-            <ShareKakaoLink item={{ id: id, output: output }} />
+            <h3 className="lg:text-3xl mb-3 xs:text-2xl mt-10 ">당신의 결과는?</h3>
+            <p className="text-xl">{output}</p>
+            <p className="mt-5">{info.description}</p>
+
+            <div className="flex space-x-4 w-[100%]">
+                <button
+                    onClick={openStoreLink}
+                    className="mt-4 px-4 py-2 bg-blue-500 text-white rounded w-full" // 'w-full' 클래스 추가
+                >
+                    전체 곡을 듣고 싶다면?
+                </button>
+
+                <Link to="/" className="w-full">
+                    <button className="mt-4 px-4 py-2 bg-blue-500 text-white rounded w-full">다시하기</button>
+                </Link>
+            </div>
+
+            <div>
+                <button
+                    onClick={() =>
+                        window.open('https://play.google.com/store/apps/details?id=com.indj.music', '_blank')
+                    }
+                    className="mt-4 px-4 py-2 bg-green-500 text-white rounded mr-10"
+                >
+                    Google Play Store
+                </button>
+                <button
+                    onClick={() =>
+                        window.open(
+                            'https://apps.apple.com/kr/app/indj-%EC%9E%90%EC%9C%A0%EB%A1%AD%EA%B2%8C-%EB%93%A3%EB%8A%94-%EC%83%81%ED%99%A9-%EA%B0%90%EC%84%B1-%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5-%EC%9D%8C%EC%95%85/id1513542512',
+                            '_blank'
+                        )
+                    }
+                    className="mt-4 px-4 py-2 bg-blue-500 text-white rounded"
+                >
+                    App Store
+                </button>
+            </div>
+
+            <span className="m-10 text-xl font-bold">내 결과 공유하기</span>
+            <div className="flex justify-center space-x-10 mb-10">
+                <img src={LinkShare} onClick={copyLink} className="h-[40px] w-[40px] mt-[8px]"></img>
+                <img src={Kakao} onClick={shareKakaoLink} className="h-[40px] w-[40px] mt-[8px]"></img>
+                <img src={Facebook} onClick={shareFacebook} className="h-[40px] w-[40px] mt-[8px]"></img>
+                <img src={X} onClick={shareTwitter} className="h-[40px] w-[40px] mt-[8px]"></img>
+                {/* <ShareKakaoLink item={{ id: id, output: output }} /> */}
+            </div>
         </div>
     );
 };

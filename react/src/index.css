@@ -2,7 +2,7 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-body{
-    width : 60%;
-    margin : 0 auto;
+body {
+    width: 500px;
+    margin: 0 auto;
 }
