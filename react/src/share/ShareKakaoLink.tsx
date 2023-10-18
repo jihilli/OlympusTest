@@ -4,7 +4,7 @@ import React from 'react';
 interface ShareKakaoLinkProps {
     item: {
         id: string;
-        output: string;
+        output: string[];
     };
 }
 

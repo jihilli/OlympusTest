@@ -2,12 +2,19 @@ import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import ShareKakaoLink from './share/ShareKakaoLink.tsx';
 
-// import 이미지
+// import - 신/여신 이미지
+import hestia from './assets/img/chars/athena.svg';
+
+// import - 공유 이미지
 import Kakao from './assets/img/logo/kakao-talk.png';
 import LinkShare from './assets/img/logo/link.png';
 import Facebook from './assets/img/logo/facebook.png';
 import X from './assets/img/logo/xImg.png';
 import resultTitle from './assets/img/resultTitle.svg';
+
+// import 컴포넌트
+import Playlist from './components/result/Playlist.tsx';
+import Music from './components/result/Music.tsx';
 
 type ResultProps = {
     result: string;
@@ -64,7 +71,7 @@ const Result: React.FC = () => {
     const { id } = useParams();
 
     if (!id || isNaN(parseInt(id))) {
-        return null; // If not, render nothing
+        return null;
     }
 
     let parsedId = parseInt(id);
@@ -74,40 +81,40 @@ const Result: React.FC = () => {
         return null; // 해당 결과가 없을 경우 렌더링하지 않음
     }
 
-    let output = '';
-    let title = '';
+    let output: string[] = [];
+    let title: string = '';
 
     switch (parseInt(id)) {
         case 0: // ETJ
-            output = '번개를 타고 하늘을 누비며, 록 음악의 강렬함과 파워를 닮은';
+            output = ['번개를 타고 하늘을 누비며,', '록의 강렬함과 파워를 닮은'];
             title = '제우스';
             break;
         case 1: // ETP
-            output = '용맹을 상징하며, 랩/힙합 음악의 날카로움과 도전적인 정신을 닮은';
+            output = ['용맹을 상징하며,', '랩의 날카로움과 도전적인 정신을 닮은'];
             title = '아레스';
             break;
         case 2: // EFJ
-            output = '태양을 지배하는 신, 재즈 음악의 세련된 표현과 깊이를 닮은';
+            output = ['태양을 지배하는 신,', '재즈의 세련된 표현과 깊이를 닮은'];
             title = '아폴론';
             break;
         case 3: // EFP
-            output = '여행과 소통을 상징하는 신, 인디음악의 자유로움과 창조성을 닮은';
+            output = ['여행과 소통을 상징하는 신,', '인디음악의 자유로움과 창조성을 닮은'];
             title = '헤르메스';
             break;
         case 4: // ITJ
-            output = '전략과 지혜의 여신, 팝 음악의 변화무쌍함과 계획적 구성을 닮은';
+            output = ['전략과 지혜의 여신,', '팝의 변화무쌍함과 계획적 구성을 닮은'];
             title = '아테나';
             break;
         case 5: // ITP
-            output = '달과 자연을 지배하는 여신, 발라드 음악의 섬세함과 깊이를 닮은';
+            output = ['달과 자연을 지배하는 여신,', '발라드의 섬세함과 깊이를 닮은'];
             title = '아르테미스';
             break;
         case 6: // IFJ
-            output = '농업과 풍요를 상징하는 여신, 재즈의 유연성과 창조성을 닮은';
+            output = ['농업과 풍요를 상징하는 여신', '재즈의 유연성과 창조성을 닮은'];
             title = '데메테르';
             break;
         case 7: // IFP
-            output = '온화함과 조화를 상징하는 신, 댄스/아이돌 음악의 활력을 닮은 ';
+            output = ['온화함과 조화를 상징하는 신,', '댄스/아이돌 음악의 활력을 닮은'];
             title = ' 헤스티아 ';
             break;
 
@@ -159,7 +166,7 @@ const Result: React.FC = () => {
             objectType: 'feed',
             content: {
                 title: '내가 올림포스 신이라면?',
-                description: output,
+                description: 'hi!',
                 imageUrl:
                     'https://img.freepik.com/free-vector/olympian-gods-flat-icon-set-with-athena-appolo-hera-zeus-hestia-demeter-aphrodite-ares-hermes-hephaestus-poseidon-artemis-figures-vector-illustration_1284-80695.jpg', // 썸네일 이미지 URL 설정
                 link: {
@@ -187,15 +194,31 @@ const Result: React.FC = () => {
     };
 
     return (
-        <div className="flex flex-col items-center justify-center text-center ml-6 h-full">
-            <img src={resultTitle} alt="" />
-            {/* <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center"> */}
-            <div>
-                <p className="absolute top-0 left-0 w-full h-full flex items-center justify-center">{output}</p>
-                <span>{title}</span>
-            </div>
-            <p className="mt-5">{info.description}</p>
+        <div>
+            <div className="relative flex flex-col items-center justify-center text-center">
+                <div>
+                    <img src={hestia} className="mb-6" />
+                </div>
+                <img src={resultTitle} alt=" " className="w-full h-full mb-12" />
+                <div className="absolute top-[605px] w-full flex flex-col items-center justify-center">
+                    <div className="absolute w-full h-full text-2xl">
+                        {output.map((line, index) => (
+                            <p key={index}>{line}</p>
+                        ))}
+                    </div>
 
+                    <span className="absolute top-[120px] left-0 w-full h-full text-4xl">{title}</span>
+                </div>
+            </div>
+            <p className=" text-center">{info.description}</p>
+            {/* 추천 음악 */}
+            <div className="mb-5">
+                <Playlist />
+                <Music />
+                <Music />
+                <Music />
+                <p className="ml-1">외 n곡</p>
+            </div>
             <div className="flex space-x-4 w-[100%]">
                 <button
                     onClick={openStoreLink}
@@ -209,7 +232,7 @@ const Result: React.FC = () => {
                 </Link>
             </div>
 
-            <div>
+            {/* <div>
                 <button
                     onClick={() =>
                         window.open('https://play.google.com/store/apps/details?id=com.indj.music', '_blank')
@@ -229,14 +252,14 @@ const Result: React.FC = () => {
                 >
                     App Store
                 </button>
-            </div>
+            </div> */}
 
-            <span className="m-10 text-xl font-bold">내 결과 공유하기</span>
+            <span className=" flex justify-center m-12 text-xl font-bold">내 결과 공유하기</span>
             <div className="flex justify-center space-x-10 mb-10">
-                <img src={LinkShare} onClick={copyLink} className="h-[40px] w-[40px] mt-[8px]"></img>
-                <img src={Kakao} onClick={shareKakaoLink} className="h-[40px] w-[40px] mt-[8px]"></img>
-                <img src={Facebook} onClick={shareFacebook} className="h-[40px] w-[40px] mt-[8px]"></img>
-                <img src={X} onClick={shareTwitter} className="h-[40px] w-[40px] mt-[8px]"></img>
+                <img src={LinkShare} onClick={copyLink} className="h-[40px] w-[40px] mt-[8px]  cursor-pointer"></img>
+                <img src={Kakao} onClick={shareKakaoLink} className="h-[40px] w-[40px] mt-[8px] cursor-pointer"></img>
+                <img src={Facebook} onClick={shareFacebook} className="h-[40px] w-[40px] mt-[8px] cursor-pointer"></img>
+                <img src={X} onClick={shareTwitter} className="h-[40px] w-[40px] mt-[8px] cursor-pointer"></img>
                 {/* <ShareKakaoLink item={{ id: id, output: output }} /> */}
             </div>
         </div>
