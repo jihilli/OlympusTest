@@ -5,10 +5,11 @@ import Main from './Main.tsx';
 import Result from './Result.tsx';
 
 function App() {
+    const kakaoApiKey = process.env.REACT_APP_KAKAOSHARE_KEY;
     // init 체크
     useEffect(() => {
         if (!window.Kakao.isInitialized()) {
-            window.Kakao.init('673fadfd864c9befed1ea1d0b212e8e2');
+            window.Kakao.init(kakaoApiKey);
         }
     }, []);
 
