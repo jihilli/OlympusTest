@@ -3,10 +3,11 @@ import { Link, useParams } from 'react-router-dom';
 import ShareKakaoLink from './share/ShareKakaoLink.tsx';
 
 // import 이미지
-import Kakao from './assets/img/kakao-talk.png';
-import LinkShare from './assets/img/link.png';
-import Facebook from './assets/img/facebook.png';
-import X from './assets/img/xImg.png';
+import Kakao from './assets/img/logo/kakao-talk.png';
+import LinkShare from './assets/img/logo/link.png';
+import Facebook from './assets/img/logo/facebook.png';
+import X from './assets/img/logo/xImg.png';
+import resultTitle from './assets/img/resultTitle.svg';
 
 type ResultProps = {
     result: string;
@@ -74,30 +75,40 @@ const Result: React.FC = () => {
     }
 
     let output = '';
+    let title = '';
+
     switch (parseInt(id)) {
         case 0: // ETJ
-            output = '번개를 타고 하늘을 누비며, 록 음악의 강렬함과 파워를 닮은 제우스';
+            output = '번개를 타고 하늘을 누비며, 록 음악의 강렬함과 파워를 닮은';
+            title = '제우스';
             break;
         case 1: // ETP
-            output = '용맹을 상징하며, 랩/힙합 음악의 날카로움과 도전적인 정신을 닮은 아레스';
+            output = '용맹을 상징하며, 랩/힙합 음악의 날카로움과 도전적인 정신을 닮은';
+            title = '아레스';
             break;
         case 2: // EFJ
-            output = '태양을 지배하는 신, 재즈 음악의 세련된 표현과 깊이를 닮은 아폴론';
+            output = '태양을 지배하는 신, 재즈 음악의 세련된 표현과 깊이를 닮은';
+            title = '아폴론';
             break;
         case 3: // EFP
-            output = '여행과 소통을 상징하는 신, 인디음악의 자유로움과 창조성을 닮은 헤르메스';
+            output = '여행과 소통을 상징하는 신, 인디음악의 자유로움과 창조성을 닮은';
+            title = '헤르메스';
             break;
         case 4: // ITJ
-            output = '전략과 지혜의 여신, 팝 음악의 변화무쌍함과 계획적 구성을 닮은 아테나';
+            output = '전략과 지혜의 여신, 팝 음악의 변화무쌍함과 계획적 구성을 닮은';
+            title = '아테나';
             break;
         case 5: // ITP
-            output = '달과 자연을 지배하는 여신, 발라드 음악의 섬세함과 깊이를 닮은 아르테미스';
+            output = '달과 자연을 지배하는 여신, 발라드 음악의 섬세함과 깊이를 닮은';
+            title = '아르테미스';
             break;
         case 6: // IFJ
-            output = '농업과 풍요를 상징하는 여신, 재즈의 유연성과 창조성을 닮은 데메테르';
+            output = '농업과 풍요를 상징하는 여신, 재즈의 유연성과 창조성을 닮은';
+            title = '데메테르';
             break;
         case 7: // IFP
-            output = '온화함과 조화를 상징하는 신, 댄스/아이돌 음악의 활력을 닮은 헤스티아';
+            output = '온화함과 조화를 상징하는 신, 댄스/아이돌 음악의 활력을 닮은 ';
+            title = ' 헤스티아 ';
             break;
 
         default:
@@ -177,8 +188,12 @@ const Result: React.FC = () => {
 
     return (
         <div className="flex flex-col items-center justify-center text-center ml-6 h-full">
-            <h3 className="lg:text-3xl mb-3 xs:text-2xl mt-10 ">당신의 결과는?</h3>
-            <p className="text-xl">{output}</p>
+            <img src={resultTitle} alt="" />
+            {/* <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center"> */}
+            <div>
+                <p className="absolute top-0 left-0 w-full h-full flex items-center justify-center">{output}</p>
+                <span>{title}</span>
+            </div>
             <p className="mt-5">{info.description}</p>
 
             <div className="flex space-x-4 w-[100%]">

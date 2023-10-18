@@ -80,11 +80,23 @@ const ProgressBar: React.FC<{ current: number; total: number }> = ({ current, to
     const width = (current / total) * 100;
 
     return (
-        <div className=" h-2 bg-gray-200 rounded lg:mb-20 xs:mb-10 xs:w-[100%] lg:w-[50%]">
-            <div style={{ width: `${width}%` }} className="h-full bg-red-500 rounded"></div>
+        <div className="relative h-2 bg-gray-200 rounded lg:mb-20 xs:mb-10 w-[100%]">
+            <div style={{ width: `${width}%` }} className="h-full bg-red-500 rounded z-10"></div>
+
+            {/* Add dots for each question */}
+            {Array(total)
+                .fill(null)
+                .map((_, i) => (
+                    <div
+                        key={i}
+                        style={{ left: `calc(${((i + 1) / total) * 100}% - 3%)` }}
+                        className="absolute top-0 bottom-half w-2 h-2 bg-gray-300 border-white border-solid border-opacity-[0.8] border-[4px] rounded-full transform -translate-x-half -translate-y-half z-20"
+                    />
+                ))}
         </div>
     );
 };
+
 const Main: React.FC = () => {
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [questions, setQuestions] = useState<Question[]>([]);
