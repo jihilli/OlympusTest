@@ -7,25 +7,25 @@ import Header from './layout/Header.tsx';
 import Footer from './layout/Footer.tsx';
 
 function App() {
-    const kakaoApiKey = process.env.REACT_APP_KAKAOSHARE_KEY;
-    // init 체크
-    useEffect(() => {
-        if (!window.Kakao.isInitialized()) {
-            window.Kakao.init(kakaoApiKey);
-        }
-    }, []);
+  const kakaoApiKey = process.env.REACT_APP_KAKAOSHARE_KEY;
+  // init 체크
+  useEffect(() => {
+    if (!window.Kakao.isInitialized()) {
+      window.Kakao.init(kakaoApiKey);
+    }
+  }, []);
 
-    return (
-        <Router>
-            <Header />
-            <Routes>
-                <Route path="/result/:id" element={<Result />} />
-                <Route path="/" element={<Intro />} />
-                <Route path="/main" element={<Main />} />
-            </Routes>
-            <Footer />
-        </Router>
-    );
+  return (
+    <Router>
+      <Header />
+      <Routes>
+        <Route path="/result/:id" element={<Result />} />
+        <Route path="/" element={<Intro />} />
+        <Route path="/main" element={<Main />} />
+      </Routes>
+      <Footer />
+    </Router>
+  );
 }
 
 export default App;

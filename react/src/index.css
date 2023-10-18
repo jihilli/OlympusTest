@@ -2,7 +2,19 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+@font-face {
+  font-family: 'Cafe24';
+  src: url('./assets/fonts/Cafe24.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Neo';
+  src: url('./assets/fonts/Neo.ttf') format('truetype');
+}
+
 body {
-    width: 500px;
-    margin: 0 auto;
+  background: url('./assets/img/background.jpg') no-repeat center center fixed;
+
+  width: 500px;
+  margin: 0 auto;
 }
