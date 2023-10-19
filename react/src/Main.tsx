@@ -14,67 +14,55 @@ const questionsData = [
     {
         category: 'E/I',
         question: ['친구들과 재미있게 놀다가', <br />, '집에 돌아왔다면?'],
-        answers: [
-            '오늘 정말 재밌었다! 충전 완료! 다음 약속은 언제지?',
-            '잘 놀았다! 이제 혼자서 좀 쉬면서 에너지를 충전해야지.',
-        ],
+        answers: ['충전 완료! 다음 약속은 언제지?', '이제 혼자서 좀 쉬면서 에너지를 충전해야지'],
     },
     {
         category: 'E/I',
         question: ['새로운 아이디어를', <br />, '생각해 내야 한다면?'],
-        answers: ['우선  사람들과 얘기하면서 아이디어가 잘 나올 것 같아.', '일단 혼자 고민하는 시간이 필요할 것 같아.'],
+        answers: ['우선  사람들과 얘기하면서 아이디어가 잘 나올 것 같아', '일단 혼자 고민하는 시간이 필요할 것 같아'],
     },
     {
         category: 'E/I',
-        question: '오랜만에 만난 친구들과의 모임에 갔다면?',
+        question: ['오랜만에 만난', <br />, '친구들과의 모임에 갔다면?'],
         answers: [
             '모든 친구들과 함께 이야기 나누는 건 정말 즐거워!',
-            '특정 몇몇 친구들과 깊은 이야기를 나누는 걸 좋아해.',
+            '특정 몇몇 친구들과 깊은 이야기를 나누는 걸 좋아해',
         ],
     },
     {
         category: 'T/F',
         question: ['친구가 새로운 레시피로', <br />, '만든 요리를 대접한다면?'],
-        answers: ['맛있네! 근데 양념이 좀 더 필요한 것 같아.', '이걸 언제 다 준비했어? 고생 많았다!'],
+        answers: ['맛있네! 근데 양념이 좀 더 필요한 것 같아', '이걸 언제 다 준비했어? 고생 많았다!'],
     },
     {
         category: 'T/F',
-        question: [
-            '열심히 준비해서 성공적인 결과를 ',
-            <br />,
-            ' 내었다고 생각하는데',
-            <br />,
-            " '사람들이 재능 있네!' 라고 말한다면",
-        ],
-        answers: ['그래, 나 재능있지!', ['내가 열심히 했다는 걸 모르고', <br />, '그냥 재능 때문이라고 생각하다니..']],
+        question: ['성공적인 결과를 냈을 때', <br />, " '재능 있네!' 라고 듣는다면?"],
+        answers: ['그래, 나 재능있지!', ['내가 열심히 했다는 걸 모르고', <br />, '그냥 재능 때문이라고 생각하다니']],
     },
     {
         category: 'T/F',
         question: '친구와의 약속에 늦었다면?',
-        answers: ['우선 늦은 이유를 명확하게 설명해야지.', '우선 사과부터 해야겠어.'],
+        answers: ['우선 늦은 이유를 명확하게 설명해야지', '우선 사과부터 해야겠어'],
     },
     {
         category: 'J/P',
         question: '오랜만에 휴가를 계획한다면?',
-        answers: [
-            '여행 일정 표처럼 상세하게 계획된 스케줄이 좋아.',
-            '그때그때의 기분과 상황에 따라 결정하는 여유가 좋아.',
-        ],
+        answers: ['여행 일정표처럼 상세하게 계획된 스케줄이 좋아', '그때그때의 기분과 상황에 따라 결정하는 게 좋아'],
     },
     {
         category: 'J/P',
         question: '당신의 방을 둘러본다면?',
         answers: [
-            '항상 모든 물건이 정해진 자리에 있어야 마음이 편해.',
-            ['조금 지저분해도 필요한 것들은', <br />, '잘 찾아낼 수 있으니 문제 없어.'],
+            '항상 모든 물건이 정해진 자리에 있어야 마음이 편해',
+            ['조금 지저분해도', <br />, '필요한 것들은 잘 찾아낼 수 있어'],
         ],
     },
     {
         category: 'J/P',
         question: ['주말에 무작정 차를 타고', <br />, '드라이브를 간다면?'],
         answers: [
-            '그래도 대략적인 목적지나 계획은 세워두고 싶어.',
-            ['마음 가는 대로 운전하며', <br />, '길 위에서의 새로운 발견을 즐기겠어.'],
+            '그래도 대략적인 목적지나 계획은 세워두고 싶어',
+            ['마음 가는 대로 운전하며', <br />, '길 위에서의 새로운 발견을 즐기겠어'],
         ],
     },
 ];
@@ -167,37 +155,44 @@ const Main: React.FC = () => {
     }
 
     return (
-        <div className="flex flex-col items-center justify-center h-screen ">
+        <div className="flex flex-col items-center justify-center h-[80vh]  ">
             <ProgressBar current={currentQuestionIndex + 1} total={questionsData.length} />
-            <div className="mt-[160px] text-center  font-custom1">
-                <div className="inline-block bg-gray-200 px-3 py-1 rounded-md  text-center">
-                    <p className="text-base text-center">
-                        {currentQuestionIndex + 1}/{questionsData.length}
+
+            <div className="w-auto h-[230px] backdrop-blur rounded-3xl absolute top-56">
+                <div className=" rounded-lg relative top-2  py-10">
+                    <div className="text-center  font-custom1 ">
+                        <div className="inline-block bg-gray-200 px-3 py-1 rounded-lg  text-center ">
+                            <p className="text-base text-center inline-block">
+                                {currentQuestionIndex + 1}/{questionsData.length}
+                            </p>
+                        </div>
+                    </div>
+                    <p className="flex justify-center text-2xl text-center mt-4 mx-3  font-custom1">
+                        {questionsData[currentQuestionIndex].question}
                     </p>
                 </div>
-                <p className="flex justify-center text-2xl text-center mt-4 mx-3  font-custom1">
-                    {questionsData[currentQuestionIndex].question}
-                </p>
             </div>
+
             {currentQuestionIndex < questionsData.length ? (
-                <div style={{ marginTop: 'auto' }} className="w-full max-w-md ">
-                    {questionsData[currentQuestionIndex].answers.map((answerText, i) => (
-                        <div key={i} className="mb-2">
+                <>
+                    <div style={{ marginTop: 'auto' }} className="w-full max-w-md ">
+                        {questionsData[currentQuestionIndex].answers.map((answerText, i) => (
                             <button
+                                key={i}
                                 onClick={() =>
                                     handleAnswer(
                                         questionsData[currentQuestionIndex].category as Question['category'],
                                         (i + 1) as Answer
                                     )
                                 }
-                                className="w-full px-6 h-20 text-white bg-custom-black2 rounded-xl top-300 font-custom2"
+                                className="w-full px-6 h-[20px] text-white bg-custom-black2 rounded-xl top-[300px] font-custom2 mb-[10px]"
                             >
                                 {' '}
                                 {answerText}{' '}
-                            </button>{' '}
-                        </div>
-                    ))}{' '}
-                </div>
+                            </button>
+                        ))}
+                    </div>
+                </>
             ) : null}
         </div>
     );
