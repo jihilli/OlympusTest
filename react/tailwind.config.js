@@ -3,6 +3,10 @@ module.exports = {
   darkMode: false,
   theme: {
     extend: {
+      backdropFilter: {
+        none: 'none',
+        blur: 'blur(50px)',
+      },
       fontFamily: {
         custom1: ['Cafe24', 'Cafe24'],
         custom2: ['Neo', 'Neo'],
@@ -35,6 +39,7 @@ module.exports = {
   variants: {
     extend: {
       placeholderColor: ['responsive', 'dark', 'focus', 'hover', 'active'],
+      backdropFilter: ['responsive'],
     },
   },
   plugins: [

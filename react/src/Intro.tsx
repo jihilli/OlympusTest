@@ -13,10 +13,10 @@ const Intro = () => {
       </p>
       <Link to="/main">
         <button className="mt-10 px-36 py-4 bg-custom-black2 text-white rounded-xl font-custom2 ">
-          테스트 시작하기
+          시작하기
         </button>
       </Link>
-      <span className="mt-5 font-custom2">지금까지 n명 참여</span>
+      <span className="mt-5 font-custom2">지금까지 000,000명이 참여했어요</span>
     </div>
   );
 };
