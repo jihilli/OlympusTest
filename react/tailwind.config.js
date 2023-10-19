@@ -3,6 +3,10 @@ module.exports = {
   darkMode: false,
   theme: {
     extend: {
+      fontFamily: {
+        custom1: ['Cafe24', 'Cafe24'],
+        custom2: ['Neo', 'Neo'],
+      },
       screens: {
         xs: '320px',
         sm: '640px',

@@ -54,7 +54,11 @@ const questionsData = [
     ],
     answers: [
       '그래, 나 재능있지!',
-      '내가 열심히 했다는 걸 모르고 그냥 재능 때문이라고 생각하다니..',
+      [
+        '내가 열심히 했다는 걸 모르고',
+        <br />,
+        '그냥 재능 때문이라고 생각하다니..',
+      ],
     ],
   },
   {
@@ -78,7 +82,11 @@ const questionsData = [
     question: '당신의 방을 둘러본다면?',
     answers: [
       '항상 모든 물건이 정해진 자리에 있어야 마음이 편해.',
-      '조금 지저분해도 필요한 것들은 잘 찾아낼 수 있으니 문제 없어.',
+      [
+        '조금 지저분해도 필요한 것들은',
+        <br />,
+        '잘 찾아낼 수 있으니 문제 없어.',
+      ],
     ],
   },
   {
@@ -86,7 +94,11 @@ const questionsData = [
     question: ['주말에 무작정 차를 타고', <br />, '드라이브를 간다면?'],
     answers: [
       '그래도 대략적인 목적지나 계획은 세워두고 싶어.',
-      '마음 가는 대로 운전하며 길 위에서의 새로운 발견을 즐기겠어.',
+      [
+        '마음 가는 대로 운전하며',
+        <br />,
+        '길 위에서의 새로운 발견을 즐기겠어.',
+      ],
     ],
   },
 ];
@@ -200,7 +212,7 @@ const Main: React.FC = () => {
                     (i + 1) as Answer
                   )
                 }
-                className="w-full px-6 py-3 text-white bg-custom-black2 rounded-xl top-300 font-custom2"
+                className="w-full px-6 h-20 text-white bg-custom-black2 rounded-xl top-300 font-custom2"
               >
                 {' '}
                 {answerText}{' '}
