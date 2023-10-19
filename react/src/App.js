@@ -7,13 +7,20 @@ import Header from './layout/Header.tsx';
 import Footer from './layout/Footer.tsx';
 
 function App() {
-    const kakaoApiKey = process.env.REACT_APP_KAKAOSHARE_KEY;
-    // init 체크
+    const KakaoApiKey = process.env.REACT_APP_KAKAOSHARE_KEY;
+
     useEffect(() => {
-        if (!window.Kakao.isInitialized()) {
-            window.Kakao.init(kakaoApiKey);
-        }
+        const script = document.createElement('script');
+        script.src = 'https://developers.kakao.com/sdk/js/kakao.js';
+        script.onload = () => {
+            window.Kakao.init(KakaoApiKey);
+        };
+        document.head.appendChild(script);
     }, []);
+    // init 체크
+    // if (!window.Kakao.isInitialized()) {
+    //     window.Kakao.init(KakaoApiKey);
+    // }
 
     return (
         <Router>

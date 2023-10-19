@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import axios from 'axios';
+
+// import - 컴포넌트
 import ShareKakaoLink from './share/ShareKakaoLink.tsx';
 
 // import - 신/여신 이미지
@@ -14,7 +17,7 @@ import hestia from './assets/img/chars/hestia.svg';
 
 // import - 공유 이미지
 import Kakao from './assets/img/logo/kakao-talk.png';
-import LinkShare from './assets/img/logo/link.png';
+import LinkShare from './assets/img/logo/linkRound.svg';
 import Facebook from './assets/img/logo/facebook.png';
 import X from './assets/img/logo/xImg.png';
 import resultTitle from './assets/img/resultTitle.svg';
@@ -25,6 +28,7 @@ import Music from './components/result/Music.tsx';
 
 type ResultProps = {
     result: string;
+    img: string;
 };
 
 const resultInfo = [
@@ -83,6 +87,21 @@ const resultInfo = [
 ];
 
 const Result: React.FC = () => {
+    // 방문자수 증가
+    useEffect(() => {
+        const incCount = async () => {
+            try {
+                const response = await axios.post('https://api2.indj.club/event/api/insertMBTILog', { type: 3 });
+                // console.log(response.data);
+            } catch (error) {
+                console.error('Failed to increment participant count:', error);
+            }
+        };
+
+        incCount();
+    }, []);
+
+    // 결과 별 아이디
     const { id } = useParams();
 
     if (!id || isNaN(parseInt(id))) {
@@ -90,7 +109,7 @@ const Result: React.FC = () => {
     }
 
     let parsedId = parseInt(id);
-    let info = resultInfo.find((info) => info.id === parsedId);
+    let info = resultInfo.find((info) => info.id === parsedId)!;
 
     if (!info) {
         return null; // 해당 결과가 없을 경우 렌더링하지 않음
@@ -177,13 +196,25 @@ const Result: React.FC = () => {
 
     // 카카오톡 링크 공유
     const shareKakaoLink = () => {
-        Kakao.Link.sendDefault({
+        if (!window.Kakao.isInitialized()) {
+            alert("Kakao SDK isn't initialized.");
+            return;
+        }
+        // id를 사용해 resultInfo에서 해당 결과 정보 찾기
+        const info = resultInfo.find((result) => result.id === Number(id));
+
+        if (!info || !info.img) {
+            console.error('Invalid image information.');
+            return;
+        }
+        const description = output.join(' ');
+
+        window.Kakao.Link.sendDefault({
             objectType: 'feed',
             content: {
                 title: '내가 올림포스 신이라면?',
-                description: 'hi!',
-                imageUrl:
-                    'https://img.freepik.com/free-vector/olympian-gods-flat-icon-set-with-athena-appolo-hera-zeus-hestia-demeter-aphrodite-ares-hermes-hephaestus-poseidon-artemis-figures-vector-illustration_1284-80695.jpg', // 썸네일 이미지 URL 설정
+                description: description,
+                imageUrl: info.img,
                 link: {
                     mobileWebUrl: window.location.origin + '/result/' + id,
                     webUrl: window.location.origin + '/result/' + id,
@@ -209,7 +240,7 @@ const Result: React.FC = () => {
     };
 
     return (
-        <div>
+        <div className="bg-white">
             <div className="relative flex flex-col items-center justify-center text-center">
                 <div>
                     <img src={info.img} alt="title" className="mb-6" />
@@ -222,10 +253,12 @@ const Result: React.FC = () => {
                         ))}
                     </div>
 
-                    <span className="absolute top-[120px] left-0 w-full h-full text-4xl font-custom1">{title}</span>
+                    <span className="pr-7 pl-7 absolute top-[120px] left-0 w-full h-full text-4xl font-custom1">
+                        {title}
+                    </span>
                 </div>
             </div>
-            <p className=" text-center font-custom2">
+            <p className="pr-7 pl-7 text-center font-custom2 leading-[1.6]">
                 {info.description.split('/').map((line, index) => (
                     <React.Fragment key={index}>
                         {line}
@@ -235,14 +268,14 @@ const Result: React.FC = () => {
                 ))}
             </p>
             {/* 추천 음악 */}
-            <div className="mb-5">
+            <div className="pr-7 pl-7 mb-5">
                 <Playlist />
                 <Music />
                 <Music />
                 <Music />
                 <p className="ml-1 font-custom2">외 n곡</p>
             </div>
-            <div className="flex space-x-4 w-[100%]">
+            <div className="pr-7 pl-7 flex space-x-4 w-[100%]">
                 <button
                     onClick={openStoreLink}
                     className="mt-4 px-4 py-2 bg-custom-black2 text-white rounded-xl w-full font-custom2"
@@ -256,28 +289,6 @@ const Result: React.FC = () => {
                     </button>
                 </Link>
             </div>
-
-            {/* <div>
-                <button
-                    onClick={() =>
-                        window.open('https://play.google.com/store/apps/details?id=com.indj.music', '_blank')
-                    }
-                    className="mt-4 px-4 py-2 bg-green-500 text-white rounded mr-10"
-                >
-                    Google Play Store
-                </button>
-                <button
-                    onClick={() =>
-                        window.open(
-                            'https://apps.apple.com/kr/app/indj-%EC%9E%90%EC%9C%A0%EB%A1%AD%EA%B2%8C-%EB%93%A3%EB%8A%94-%EC%83%81%ED%99%A9-%EA%B0%90%EC%84%B1-%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5-%EC%9D%8C%EC%95%85/id1513542512',
-                            '_blank'
-                        )
-                    }
-                    className="mt-4 px-4 py-2 bg-blue-500 text-white rounded"
-                >
-                    App Store
-                </button>
-            </div> */}
 
             <span className=" flex justify-center m-16 text-xl font-bold font-custom2">내 결과 공유하기</span>
             <div className="flex justify-center space-x-10 mb-10">
