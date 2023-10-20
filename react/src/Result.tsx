@@ -156,7 +156,7 @@ const Result: React.FC = () => {
             break;
         case 7: // IFP
             output = ['온화함과 조화를 상징하는 신,', '댄스/아이돌 음악의 활력을 닮은'];
-            title = ' 헤스티아 ';
+            title = '헤스티아 ';
             break;
 
         default:
@@ -225,7 +225,7 @@ const Result: React.FC = () => {
             objectType: 'feed',
             content: {
                 title: '내가 올림포스 신이라면?',
-                description: description,
+                description: `${description} ${title}`,
                 imageUrl: info.thumbnail,
                 link: {
                     mobileWebUrl: window.location.origin + '/result/' + id,
