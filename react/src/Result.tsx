@@ -94,6 +94,12 @@ const resultInfo = [
 ];
 
 const Result: React.FC = () => {
+    // 첫 이미지 먼저 렌더링 하는 useEffect
+    useEffect(() => {
+        const img = new Image();
+        img.src = resultTitle;
+    }, []);
+
     // 방문자수 증가
     useEffect(() => {
         const incCount = async () => {
