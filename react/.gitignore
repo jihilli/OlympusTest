@@ -24,3 +24,6 @@ yarn-error.log*
 
 #key
 .env
+
+#json파일
+# /src/assets/data/musicData.json
