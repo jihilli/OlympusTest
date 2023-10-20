@@ -5,7 +5,7 @@ module.exports = {
     extend: {
       backdropFilter: {
         none: 'none',
-        blur: 'blur(50px)',
+        blur: 'blur(150px)',
       },
       fontFamily: {
         custom1: ['Cafe24', 'Cafe24'],
