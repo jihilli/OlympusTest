@@ -7,7 +7,7 @@ const Footer = () => {
     const isResultPath = location.pathname.includes('result');
 
     return (
-        <div className={`py-20 flex justify-center ${isResultPath ? 'bg-white' : ''}`}>
+        <div className={`py-10 flex justify-center ${isResultPath ? 'bg-white' : ''}`}>
             <a href="https://www.indj.ai/" target="_blank" rel="noreferrer">
                 <img src={Footerlogo} alt="" />
             </a>
