@@ -24,7 +24,6 @@ import resultTitle from './assets/img/resultTitle.svg';
 
 // import 컴포넌트
 import Playlist from './components/result/Playlist.tsx';
-import Music from './components/result/Music.tsx';
 
 type ResultProps = {
     result: string;
@@ -36,7 +35,7 @@ const resultInfo = [
         // ETJ - 제우스
         id: 0,
         img: zeus,
-        description: `당신은 제우스처럼 명확하고 결단력 있는 성격으로 알려져 있어요. 리더십이 강하고 적극적인 성격과 행동력을 가지고 있어, 그룹 내에서는 종종 지도자 역할을 맡습니다. / 당신은 제우스처럼 명확하고 결단력 있는 성격으로 알려져 있어요. 리더십이 강하고 적극적인 성격과 행동력을 가지고 있어, 그룹 내에서는 종종 지도자 역할을 맡습니다. / 어떤 상황에서든 주도적인 역할을 자주 맡게 되는데, 이는 당신의 확고한 주관과 직설적인 표현력 때문입니다. 복잡하거나 어려운 문제에 직면했을 때도 빠르고 정확하게 해결하는 당신의 능력은 주변 사람들에게 큰 신뢰를 줍니다. / 현실적이고 분석적인 사람으로서 문제 해결에 강인한 의지와 결단력을 가지고 있습니다. 그러나 때로는 너무 강력한 의지와 과감한 결정으로 인해 다른 사람들이 당황하거나 어렵게 느낄 수 있어요. 하지만 이런 점도 당신이 추구하는 목표를 향해 한결같이 나아가는 모습에서 비롯된 것입니다. 자신만의 길을 가기 위해 필요한 결정은 과감하게 내리며, 독특한 존재감으로 주변에 활력과 에너지를 불어넣곤 합니다.`,
+        description: `당신은 제우스처럼 명확하고 결단력 있는 성격으로 알려져 있어요. 리더십이 강하고 적극적인 성격과 행동력을 가지고 있어, 그룹 내에서는 종종 지도자 역할을 맡습니다. / 어떤 상황에서든 주도적인 역할을 자주 맡게 되는데, 이는 당신의 확고한 주관과 직설적인 표현력 때문입니다. 복잡하거나 어려운 문제에 직면했을 때도 빠르고 정확하게 해결하는 당신의 능력은 주변 사람들에게 큰 신뢰를 줍니다. / 현실적이고 분석적인 사람으로서 문제 해결에 강인한 의지와 결단력을 가지고 있습니다. 그러나 때로는 너무 강력한 의지와 과감한 결정으로 인해 다른 사람들이 당황하거나 어렵게 느낄 수 있어요. / 하지만 이런 점도 당신이 추구하는 목표를 향해 한결같이 나아가는 모습에서 비롯된 것입니다. 자신만의 길을 가기 위해 필요한 결정은 과감하게 내리며, 독특한 존재감으로 주변에 활력과 에너지를 불어넣곤 합니다.`,
     },
     {
         // ETP - 아레스
@@ -258,7 +257,9 @@ const Result: React.FC = () => {
                     </span>
                 </div>
             </div>
-            <p className="pr-7 pl-7 text-center font-custom2 leading-[1.6]">
+            {/* 지희 시작 */}
+
+            <p className="pr-7 pl-7 text-center font-custom2 leading-[1.6] font-semibold break-keep">
                 {info.description.split('/').map((line, index) => (
                     <React.Fragment key={index}>
                         {line}
@@ -269,12 +270,9 @@ const Result: React.FC = () => {
             </p>
             {/* 추천 음악 */}
             <div className="pr-7 pl-7 mb-5">
-                <Playlist />
-                <Music />
-                <Music />
-                <Music />
-                <p className="ml-1 font-custom2">외 n곡</p>
+                <Playlist id={parseInt(id)} />
             </div>
+            {/* 지희 끝 */}
             <div className="pr-7 pl-7 flex space-x-4 w-[100%]">
                 <button
                     onClick={openStoreLink}
@@ -290,8 +288,8 @@ const Result: React.FC = () => {
                 </Link>
             </div>
 
-            <span className=" flex justify-center m-16 text-xl font-bold font-custom2">내 결과 공유하기</span>
-            <div className="flex justify-center space-x-10 mb-10">
+            <span className="bg-white flex justify-center m-16 text-xl font-bold font-custom2">내 결과 공유하기</span>
+            <div className="flex justify-center space-x-10 ">
                 <img src={LinkShare} onClick={copyLink} className="h-[60px] w-[6] mt-[8px] cursor-pointer"></img>
                 <img src={Kakao} onClick={shareKakaoLink} className="h-[60px] w-[60px] mt-[8px] cursor-pointer"></img>
                 <img src={Facebook} onClick={shareFacebook} className="h-[60px] w-[60px] mt-[8px] cursor-pointer"></img>
