@@ -159,7 +159,7 @@ const Main: React.FC = () => {
         <div className="flex flex-col items-center justify-center h-[80vh]  ">
             <ProgressBar current={currentQuestionIndex + 1} total={questionsData.length} />
 
-            <div className="w-[330px] h-[200px] backdrop-blur rounded-3xl absolute lg:top-56 xs:top-[282px]">
+            <div className="w-[330px] h-[200px] backdrop-blur rounded-3xl absolute lg:top-56 xs:top-[282px] bg-white bg-opacity-50">
                 <div className=" rounded-lg relative top-2  py-10">
                     <div className="text-center  font-custom1 ">
                         <div className="inline-block bg-gray-200 px-3 py-1 rounded-lg  text-center break-keep ">

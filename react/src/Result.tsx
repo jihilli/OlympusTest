@@ -268,7 +268,7 @@ const Result: React.FC = () => {
         <div className="bg-white">
             <div className="relative flex flex-col items-center justify-center text-center">
                 <div>
-                    <img src={info.img} alt="title" className="mb-6" />
+                    <img src={info.img} alt="title" className="h-[500px] w-[500px] mb-6" />
                 </div>
                 <img
                     src="https://indj.s3.ap-northeast-2.amazonaws.com/image/event/olympus/resultTitle.svg"
@@ -282,7 +282,7 @@ const Result: React.FC = () => {
                         ))}
                     </div>
 
-                    <span className="pr-7 pl-7 absolute top-[120px] left-0 w-full h-full text-4xl font-custom1">
+                    <span className="pr-7 pl-7 absolute top-[121px] left-0 w-full h-full text-4xl font-custom1">
                         {title}
                     </span>
                 </div>
