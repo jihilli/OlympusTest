@@ -17,10 +17,6 @@ function App() {
         };
         document.head.appendChild(script);
     }, []);
-    // init 체크
-    // if (!window.Kakao.isInitialized()) {
-    //     window.Kakao.init(KakaoApiKey);
-    // }
 
     return (
         <Router>
