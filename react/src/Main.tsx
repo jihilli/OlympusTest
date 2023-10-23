@@ -82,7 +82,7 @@ const ProgressBar: React.FC<{ current: number; total: number }> = ({ current, to
                         <div
                             key={i}
                             style={{ left: `calc(${((i + 1) / total) * 100}% - ${5 - 1}%)` }}
-                            className={`absolute top-[30%] transform -translate-x-half w-[5px] h-[5px] bg-gray-400 rounded-full z-10 transition-all duration-[1000ms]
+                            className={`absolute top-[30%] transform -translate-x-half w-[5px] h-[5px] bg-gray-400 rounded-full z-10 transition-all duration-[500ms]
                     `}
                         ></div>
                     ) : null
@@ -90,7 +90,7 @@ const ProgressBar: React.FC<{ current: number; total: number }> = ({ current, to
 
             <div
                 style={{ width: `${width}%` }}
-                className="h-full bg-custom-pink rounded-full z-20 absolute top-half transform -translate-y-half transition-all duration-500	"
+                className="h-full bg-custom-pink rounded-full z-20 absolute top-half transform -translate-y-half"
             >
                 {current > 0 && (
                     <div
@@ -156,18 +156,18 @@ const Main: React.FC = () => {
     }
 
     return (
-        <div className="flex flex-col items-center justify-center h-screen">
+        <div className="flex flex-col items-center justify-center h-[80vh]">
             <ProgressBar current={currentQuestionIndex + 1} total={questionsData.length} />
-            <div className="w-[330px] h-[200px] backdrop-blur bg-white bg-opacity-50 rounded-3xl absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                <div className=" rounded-lg relative top-2  py-10">
-                    <div className="text-center  font-custom1 ">
-                        <div className="inline-block bg-gray-200 px-3 py-1 rounded-lg  text-center break-keep ">
+            <div className="w-[330px] h-[200px] backdrop-blur bg-white bg-opacity-50 rounded-3xl absolute top-[42%] left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                <div className="flex flex-col items-center justify-center rounded-lg py-10">
+                    <div className="text-center font-custom1 ">
+                        <div className="inline-block bg-gray-200 px-3 py-1 rounded-lg text-center break-all">
                             <p className="text-base text-center inline-block ">
                                 {currentQuestionIndex + 1}/{questionsData.length}
                             </p>
                         </div>
                     </div>
-                    <p className="flex justify-center text-2xl text-center mt-4 mx-3 font-custom1">
+                    <p className="text-2xl text-center mt-4 mx-3 font-custom1">
                         {questionsData[currentQuestionIndex].question}
                     </p>
                 </div>
