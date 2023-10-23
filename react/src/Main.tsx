@@ -187,7 +187,7 @@ const Main: React.FC = () => {
         current={currentQuestionIndex + 1}
         total={questionsData.length}
       />
-      <div className="w-[330px] h-[200px] backdrop-blur rounded-3xl absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+      <div className="w-[330px] h-[200px] backdrop-blur bg-white bg-opacity-50 rounded-3xl absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
         <div className=" rounded-lg relative top-2  py-10">
           <div className="text-center  font-custom1 ">
             <div className="inline-block bg-gray-200 px-3 py-1 rounded-lg  text-center break-keep ">
