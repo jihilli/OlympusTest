@@ -28,7 +28,7 @@ type ResultProps = {
     img: string;
 };
 
-const abc = {};
+const abc = (img: string) => `https://indj.s3.ap-northeast-2.amazonaws.com/image/event/olympus/${img}.jpg`;
 
 const resultInfo = [
     {

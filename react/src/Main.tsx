@@ -168,7 +168,7 @@ const Main: React.FC = () => {
                             </p>
                         </div>
                     </div>
-                    <p className="flex justify-center text-2xl text-center mt-4 mx-3  font-custom1">
+                    <p className="flex justify-center text-2xl text-center mt-4 mx-3 font-custom1">
                         {questionsData[currentQuestionIndex].question}
                     </p>
                 </div>
