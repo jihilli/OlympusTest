@@ -82,7 +82,7 @@ const ProgressBar: React.FC<{ current: number; total: number }> = ({ current, to
                         <div
                             key={i}
                             style={{ left: `calc(${((i + 1) / total) * 100}% - ${5 - 1}%)` }}
-                            className={`absolute top-[30%] transform -translate-x-half w-[5px] h-[5px] bg-gray-400 rounded-full z-10 transition-all duration-[500ms]
+                            className={`absolute top-[30%] transform -translate-x-half w-[5px] h-[5px] bg-gray-400 rounded-full z-10
                     `}
                         ></div>
                     ) : null
@@ -90,12 +90,12 @@ const ProgressBar: React.FC<{ current: number; total: number }> = ({ current, to
 
             <div
                 style={{ width: `${width}%` }}
-                className="h-full bg-custom-pink rounded-full z-20 absolute top-half transform -translate-y-half"
+                className="h-full bg-custom-pink rounded-full z-20 absolute top-half transform -translate-y-half transition-all duration-500"
             >
                 {current > 0 && (
                     <div
                         style={{ right: 3 }}
-                        className={`absolute top-[25%] transform -translate-x-half w-[5px] h-[5px] border-white border-solid border-opacity-[0.8] border-[3px] rounded-full z-30 transition-all duration-[500ms]
+                        className={`absolute top-[25%] transform -translate-x-half w-[5px] h-[5px] border-white border-solid border-opacity-[0.8] border-[3px] rounded-full z-30
                     `}
                     >
                         <div className="w-full h-full absolute top-half left-half transform -translate-x-half -translate-y-half bg-custom-pink rounded-full"></div>

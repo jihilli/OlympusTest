@@ -109,7 +109,7 @@ const Result: React.FC = () => {
     // 결과 별 아이디
     const { id } = useParams();
 
-    let parsedId = parseInt(id);
+    let parsedId = parseInt(id!);
     let info = resultInfo.find((info) => info.id === parsedId);
 
     useEffect(() => {
