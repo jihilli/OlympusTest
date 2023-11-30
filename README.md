@@ -2,8 +2,8 @@
 ### 그리스 로마 신화의 신들을 컨셉으로 한 MBTI 기반 성격 테스트
 <br>
 
-![001](https://github.com/jihilli/OlympusTest/assets/121305570/1601761b-8d97-4e10-902a-d9e955272188)
-![002](https://github.com/jihilli/OlympusTest/assets/121305570/5f3c2e10-56e7-4634-b16c-9af030244eaf)
+![001](https://github.com/jihilli/OlympusTest/assets/121305570/96f79749-034c-4186-abc2-208aaa42d3e7)
+![002](https://github.com/jihilli/OlympusTest/assets/121305570/c7f306a1-4948-4fc9-a2d1-c3bc9c77c79b)
 
 <br>
 <br>
